@@ -1,17 +1,23 @@
-function insert_Row() {
-    //Write your code here
-	const table = document.getElementById("sampleTable");
-  let newtr = document.createElement("tr");
-	let td1 = document.createElement("td");
-	td1.innerText="New Cell1"
-   let td2 = document.createElement("td");
-	td2.innerText = "New Cell2"
-// const row = `<td>New Cell1</td> 
-//   <td>New Cell2</td>`;
-// newtr.innerHTML=row;
-	newtr.appendChild(td1);
-	newtr.appendChild(td2);
-table.prepend(newtr) ;
-  
-  
+// Function to create the table
+function createTable() {
+    const numRows = prompt("Input number of rows:");
+    const numColumns = prompt("Input number of columns:");
+    const table = document.getElementById("sampleTable");
+
+    // Clear any existing content in the table
+    table.innerHTML = '';
+
+    // Create the table rows and cells based on user input
+    for (let i = 0; i < numRows; i++) {
+        const row = table.insertRow(i);
+
+        for (let j = 0; j < numColumns; j++) {
+            const cell = row.insertCell(j);
+            cell.textContent = `Row-${i} Column-${j}`;
+        }
+    }
 }
+
+// Attach the createTable function to the button click event
+const createTableButton = document.getElementById("createTableButton");
+createTableButton.addEventListener("click", createTable);
